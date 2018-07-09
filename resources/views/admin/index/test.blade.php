@@ -17,7 +17,7 @@
 
 <body>
 <pre class="brush: cpp;toolbar: true;">
-	#include
+	#include地方斯蒂芬斯蒂芬
 	int main()
 	{
 		int a,b;

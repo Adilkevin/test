@@ -44,9 +44,9 @@ class TestTime extends Command
 //        $log = DB::getQueryLog();
 //        Log::info($log);
 
-        $monolog = Log::getMonolog();
-        $monolog->popHandler();
-        Log::useDailyFiles(storage_path().'/logs/info.log', 30);
-        Log::info('每分钟输出一次当前的日期时间到日志当中'.date('Y-m-d H:i:s'));
+//        $monolog = Log::getMonolog();
+//        $monolog->popHandler();
+//        Log::useDailyFiles(storage_path().'/logs/info.log', 30);
+//        Log::info('每分钟输出一次当前的日期时间到日志当中'.date('Y-m-d H:i:s'));
     }
 }

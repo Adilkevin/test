@@ -16,21 +16,23 @@
 //});
 
 
-Route::middleware(['auth.login'])->get('/', 'Admin\IndexController@index');
+Route::middleware(['auth.login'])->get('/', 'Admin\IndexController@home');
 
-Route::any('admin/login', 'Admin\UsersController@login');
+Route::get('admin/login', 'Admin\UsersController@showLoginForm');
+Route::post('admin/login', 'Admin\UsersController@login');
+Route::get('admin/logout', 'Admin\UsersController@logout')->name('logout');
+Route::any('admin/myselfregister', 'Admin\RegisterController@register')->name('myselfregister');
+Route::get('admin/register', 'Admin\RegisterController@showRegistrationForm')->middleware('is.superadministrator');
 
-
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth.login'], function ($route) {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth.login','is.administrator']], function ($route) {
     $route->get('home', 'IndexController@home');
     $route->get('index', 'IndexController@index');
-    $route->get('logout', 'UsersController@logout');
 });
 
 
 Route::any('admin/test', 'admin\IndexController@test');
+Route::any('admin/uploadFileAjax', 'admin\IndexController@uploadFileAjax');
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
 

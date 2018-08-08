@@ -17,15 +17,7 @@ class IsAdministrator
      */
     public function handle($request, Closure $next)
     {
-//var_dump($request->user()->id);
         $user = $request->user();
-        var_dump($user->id);
-//        $user->givePermissionTo('edit articles');
-//        $user->assignRole('administrator');
-//        var_dump($user->);
-
-//        $role  =  Role::create(['name'  =>  'writer']);
-//        $permission  =  Permission::create(['name' => 'edit articles']);
         if (!$user->hasRole('admin')) {
             return redirect('admin/login');
         }

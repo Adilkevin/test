@@ -237,6 +237,21 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;">
+                <i class="iconfont">&#xe6b4;</i>
+                <cite>后台用户管理</cite>
+                <i class="iconfont nav_right">&#xe697;</i>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a _href="{{ url('admin/getadmins') }}">
+                        <i class="iconfont">&#xe6a7;</i>
+                        <cite>管理员管理</cite>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
   </div>
 </div>

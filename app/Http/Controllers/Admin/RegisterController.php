@@ -25,9 +25,8 @@ class RegisterController extends AdminController
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
+//        dd($request->all());
         event(new Registered($user = $this->create($request->all())));
-        echo 111;exit;
 
 //        $this->guard()->login($user);
 
@@ -46,7 +45,7 @@ class RegisterController extends AdminController
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255|unique:username',
+            'username' => 'required|string|max:255|unique:admins',
 //            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -61,9 +60,10 @@ class RegisterController extends AdminController
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['username'],
-            'password' => Crypt::encrypt($data['password']),
-        ]);
+                'username' => $data['username'],
+                'name'     => $data['username'],
+                'password' => Crypt::encrypt($data['password']),
+            ]);
     }
 
 }

@@ -22,59 +22,71 @@
 
 <body>
 
-<div  >
-                        <input type="file" name="FileUpload" id="FileUpload">
-                        <a class="layui-btn layui-btn-mini" id="btn_uploadimg">上传图片</a>
-                    </div>
+{{--<div>
+    <input type="file" name="FileUpload" id="FileUpload">
+    <a class="layui-btn layui-btn-mini" id="btn_uploadimg">上传图片</a>
+</div>--}}
+
+<script src="/js/vue.js"></script>
+
+<script src="http://www.daimajiayuan.com/member/templets/js/jquery.zclip.min.js"></script>
+
+
+
+<input type="text" value="www.baidu.com" id="link">
+<span id="copyBtn">复制链接</span>
 
 <script>
-$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
-       $(function () {
-           $("#btn_uploadimg").click(function () {
-			   var formFile = new FormData();
-               var fileObj = document.getElementById("FileUpload").files[0]; // js 获取文件对象
-               if (typeof (fileObj) == "undefined" || fileObj.size <= 0) {
-                   alert("请选择图片");
-                   return;
-               }
-			   formFile.files = fileObj; //加入文件对象
-               console.log('fileObj: ');
-               console.log(fileObj);
-               console.log('formFile: ');
-               console.log(formFile);
+    $('#copyBtn').zclip({
+        copy: function () {//复制内容
+            return $('#link').val();
+        },
+    });
 
-			   console.log('formFile: ');
-console.log(formFile.files);
-               //第一种  XMLHttpRequest 对象
-               //var xhr = new XMLHttpRequest();
-               //xhr.open("post", "/Admin/Ajax/VMKHandler.ashx", true);
-               //xhr.onload = function () {
-               //    alert("上传完成!");
-               //};
-               //xhr.send(formFile);
+    /*function shagua() {
+        this.name = 'shagua';
+    }
 
-               //第二种 ajax 提交
+    function Person(){
+        this.name = 'super';
+    }
+    Person.prototype = new shagua();
 
-               var data = formFile;
-               
-               $.ajax({
-                   url: "{{ url('admin/uploadFileAjax') }}",
-                   data: formFile.files,
-                   type: "post",
-                   dataType: "json",
-//                   cache: false,//上传文件无需缓存
-                   processData: false,//用于对data参数进行序列化处理 这里必须false
-                   contentType: false, //必须
-                   success: function (result) {
-					   console.log(result);
-                       alert("上传完成!");
-                   },
-               })
-           })
-       })
+    Person.prototype.getName = function(){
+        return this.name;
+    }
 
-   </script>
+    function Someone(){
+        this.son = 'my son';
+    }
+    Someone.prototype = new Person();
+    Someone.prototype.getSonStatus = function(){
+        alert(this.son);
+        console.log(this.son);
+        return '1111';
+    }
+    var instance = new Someone();
+    alert(instance.getName());
+    console.log(shagua.name);
+    console.log(instance.getSonStatus());
+    console.log(instance);*/
 
+//    function Person(name){
+//        this.name = name;
+//    }
+//    Person.prototype.getName = function(){
+//        return this.name;
+//    }
+//    function Someone(){
+//        this.son = true;
+//        Person.call(this,'Peter');
+//    }
+//    Someone.prototype.getSonStatus = function(){
+//        alert(this.son);
+//    }
+//    var instance = new Someone();
+//    alert(instance.name);
+</script>
 
 </body>
 

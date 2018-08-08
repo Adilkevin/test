@@ -27,6 +27,14 @@ Route::get('admin/register', 'Admin\RegisterController@showRegistrationForm')->m
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth.login','is.administrator']], function ($route) {
     $route->get('home', 'IndexController@home');
     $route->get('index', 'IndexController@index');
+    $route->get('getadmins', 'UsersController@adminsList');
+
+
+
+
+    $route::group([], function ($rout) {
+        $rout->any('adminsForgetpwd', 'UsersController@adminsForgetpwd');
+    });
 });
 
 

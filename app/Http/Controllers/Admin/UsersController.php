@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Common\AdminController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class UsersController extends AdminController
@@ -24,6 +24,27 @@ class UsersController extends AdminController
     {
         return view('admin.users.login');
     }
+
+    public function adminsList(Request $request)
+    {
+        $admins = DB::table('admins')->paginate(15);
+
+        $data = array(
+            'admins' => $admins,
+        );
+        return view('admin.users.admins', $data);
+    }
+
+    public function adminsForgetpwd()
+    {
+
+
+        $data = array(
+
+        );
+        return view('admin.users.adminsforget', $data);
+    }
+
 
 
 

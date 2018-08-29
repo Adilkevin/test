@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AuthLogin
 {
@@ -15,7 +16,7 @@ class AuthLogin
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->session()->has('administrator')) {
+        if (!Auth::check()) {
             return redirect('admin/login');
         }
 

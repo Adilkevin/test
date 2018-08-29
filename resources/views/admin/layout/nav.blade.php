@@ -16,7 +16,7 @@
     </ul>
     <ul class="layui-nav right" lay-filter="">
       <li class="layui-nav-item">
-        <a href="javascript:;">{{ session('administrator')->name }}</a>
+        <a href="javascript:;">admin</a>
         <dl class="layui-nav-child"> <!-- 二级菜单 -->
           <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
           <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
@@ -233,6 +233,21 @@
                     <a _href="unicode.html">
                         <i class="iconfont">&#xe6a7;</i>
                         <cite>图标对应字体</cite>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="iconfont">&#xe6b4;</i>
+                <cite>后台用户管理</cite>
+                <i class="iconfont nav_right">&#xe697;</i>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a _href="{{ url('admin/getadmins') }}">
+                        <i class="iconfont">&#xe6a7;</i>
+                        <cite>管理员管理</cite>
                     </a>
                 </li>
             </ul>

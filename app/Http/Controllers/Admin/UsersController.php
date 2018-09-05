@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Common\AdminController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 
@@ -22,6 +23,9 @@ class UsersController extends AdminController
 
     public function showLoginForm(Request $request)
     {
+        $user = $request->user();
+        var_dump($user);
+//        dd(Crypt::encrypt(123456));
         return view('admin.users.login');
     }
 
